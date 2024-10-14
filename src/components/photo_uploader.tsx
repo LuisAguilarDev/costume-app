@@ -1,12 +1,19 @@
-import { useRef, useState } from "react";
-import Swal from "sweetalert2";
-import { MyDropzone } from "./dropzone";
+import { useEffect, useRef } from 'react';
+import Swal from 'sweetalert2';
+import { MyDropzone } from './dropzone';
+import { useStore } from './store';
+import { useNavigate } from 'react-router-dom';
 
-export const PhotoDropZone = ({ setPhoto, setFile, takePic, setTakePic }: { setPhoto: Function, takePic: boolean, setTakePic: Function, setFile: Function }) => {
+export const PhotoDropZone = () => {
+  const takePic = useStore((state) => state.takePic);
+  const setState = useStore((state) => state.setState);
   let videoRef = useRef<HTMLVideoElement | null>(null);
   let photoRef = useRef<HTMLCanvasElement | null>(null);
-  const [cameraReplace, setCameraReplace] = useState(false);
-
+  const mediaStreamRef = useRef<MediaStream | null>(null);
+  let navigate = useNavigate();
+  const routeChange = (path: string) => {
+    navigate(path);
+  };
   const getVideo = () => {
     navigator.mediaDevices
       .getUserMedia({
@@ -14,77 +21,82 @@ export const PhotoDropZone = ({ setPhoto, setFile, takePic, setTakePic }: { setP
       })
       .then((stream) => {
         let video: any = videoRef.current;
+        mediaStreamRef.current = stream;
         if (!video) {
-          Swal.fire("Camera not found");
+          Swal.fire('Camera not found');
+        } else {
+          video.srcObject = stream;
+          video.play();
         }
-        video.srcObject = stream;
-        video.play();
       })
       .catch((err) => {
-        Swal.fire(err);
+        Swal.fire('Someting went worng...');
       });
   };
+  useEffect(() => {
+    if (takePic) {
+      getVideo();
+    }
+  }, []);
 
   const stopVideo = () => {
-    navigator.mediaDevices
-      .getUserMedia({
-        video: true,
-      })
-      .then((stream: MediaStream | null) => {
-        stream!.getTracks().forEach((track) => {
-          track.stop();
-          track.enabled = false;
-          let video: any = videoRef.current;
+    if (mediaStreamRef?.current) {
+      mediaStreamRef.current.getAudioTracks().forEach((track) => track.stop());
+      mediaStreamRef.current.getVideoTracks().forEach((track) => track.stop());
+      mediaStreamRef.current.getTracks().forEach((track) => {
+        track.stop();
+        track.enabled = false;
+        let video: any = videoRef.current;
+        if (video) {
           video.srcObject = null;
-        });
-        stream = null;
+        }
       });
+      mediaStreamRef.current = null;
+    }
+    if (videoRef?.current) {
+      videoRef.current.srcObject = null;
+      videoRef.current = null;
+    }
   };
 
-  const printPicture = async (_: any, option?: "replace") => {
-    if (!option) {
-      setTakePic(false);
-      setCameraReplace(true);
+  const printPicture = () => {
+    const width = 400;
+    const height = width / (16 / 9);
+    let video = videoRef.current!;
+    let photo = photoRef.current!;
+    photo.width = width;
+    photo.height = height;
+    let ctx = photo.getContext('2d')!;
+    ctx.drawImage(video, 0, 0, width, height);
+    photo.toBlob(async function (blob) {
+      if (!blob) return Swal.fire('Something went wrog');
+      let file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
+      const imageUrl = URL.createObjectURL(file);
+      setState({ file: file, photo: imageUrl, takePic: false });
       stopVideo();
-      const width = 400;
-      const height = width / (16 / 9);
-      let video = videoRef.current!;
-      let photo = photoRef.current!;
-      photo.width = width;
-      photo.height = height;
-      let ctx = photo.getContext("2d")!;
-      ctx.drawImage(video, 0, 0, width, height);
-      photo.toBlob(async function (blob) {
-        if (!blob) return Swal.fire("Something went wrog");
-        let file = new File([blob], "image.jpg", { type: "image/jpeg" });
-        const imageUrl = URL.createObjectURL(file);
-        setFile(file)
-        setPhoto(imageUrl)
-      }, "image/jpeg");
-    }
-    if (option === "replace") {
-      setTakePic(false);
-      stopVideo();
-      const width = 400;
-      const height = width / (16 / 9);
-      let video = videoRef.current!;
-      let photo = photoRef.current!;
-      photo.width = width;
-      photo.height = height;
-      let ctx = photo.getContext("2d")!;
-      ctx.drawImage(video, 0, 0, width, height);
-      photo.toBlob(async function (blob) {
-        if (!blob) return Swal.fire("Camera not found");
-        let file = new File([blob], "image.jpg", { type: "image/jpeg" });
-        Swal.fire({
-          icon: "success",
-          title: "Notification",
-          text: "Document written with ID: " + "answer",
-        });
-      }, "image/jpeg");
-      //
-      setCameraReplace(false);
-    }
+    }, 'image/jpeg');
+    // }
+    // if (option === "replace") {
+    //   setState({ takePic: false });
+    //   const width = 400;
+    //   const height = width / (16 / 9);
+    //   let video = videoRef.current!;
+    //   let photo = photoRef.current!;
+    //   photo.width = width;
+    //   photo.height = height;
+    //   let ctx = photo.getContext("2d")!;
+    //   ctx.drawImage(video, 0, 0, width, height);
+    //   photo.toBlob(async function (blob) {
+    //     if (!blob) return Swal.fire("Camera not found");
+    //     let file = new File([blob], "image.jpg", { type: "image/jpeg" });
+    //     const imageUrl = URL.createObjectURL(file);
+    //     setState({ file: file })
+    //     setState({ photo: imageUrl })
+    //     stopVideo();
+    //   }, "image/jpeg");
+    //   //
+    //   setCameraReplace(false);
+    // }
   };
 
   return (
@@ -92,36 +104,21 @@ export const PhotoDropZone = ({ setPhoto, setFile, takePic, setTakePic }: { setP
       {takePic ? (
         <div className="flex flex-col">
           <video className="w-full h-[500px]" ref={videoRef}></video>
-          {cameraReplace ? (
-            <div className="flex items-center justify-center p-8">
-              <button
-                onClick={(e) => {
-                  printPicture(e, "replace");
-                }}
-                className='bg-[#9d00ff] px-4 py-3 rounded-sm font-bold'
-              >
-                Print Picture
-              </button>
-            </div>
-          ) : (
-            <div className="flex items-center justify-center p-8">
-              <button
-                onClick={(e) => {
-                  printPicture(e);
-                }}
-                className='bg-[#9d00ff] px-4 py-3 rounded-sm font-bold'
-              >
-                Print Picture
-              </button></div>
-          )}
+          <div className="flex items-center justify-center p-8">
+            <button
+              onClick={() => {
+                printPicture();
+                routeChange('last_step');
+              }}
+              className="bg-[#9d00ff] px-4 py-3 rounded-sm font-bold"
+            >
+              Print Picture
+            </button>
+          </div>
         </div>
-      ) : (
-        <video ref={videoRef} className="hidden"></video>
-      )}
-
+      ) : null}
       <canvas className="hidden" ref={photoRef}></canvas>
-      {!takePic ? <MyDropzone setPhoto={setPhoto} setFile={setFile} getVideo={getVideo} settakePic={setTakePic} /> : null}
-      <input type="file" id="file-input" style={{ display: "none" }} />
+      {!takePic ? <MyDropzone getVideo={getVideo} /> : null}
     </div>
   );
 };

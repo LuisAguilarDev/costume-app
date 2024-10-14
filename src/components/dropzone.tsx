@@ -1,40 +1,53 @@
-import { useCallback } from 'react'
-import { useDropzone } from 'react-dropzone'
+import { useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
+import { useStore } from './store';
+import { useNavigate } from 'react-router-dom';
 
-export const MyDropzone = ({ setPhoto, setFile, getVideo, settakePic }: { setPhoto: Function, setFile: Function, getVideo: Function, settakePic: any }) => {
-    const onDrop = useCallback((acceptedFiles: File[]) => {
-        const file = acceptedFiles[0];
-        if (file && file.type.startsWith('image/')) {
-            const imageUrl = URL.createObjectURL(file);
-            setPhoto(imageUrl);
-            setFile(acceptedFiles[0])
-        }
-    }, [])
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+export const MyDropzone = ({ getVideo }: { getVideo: Function }) => {
+  const setState = useStore((state) => state.setState);
+  let navigate = useNavigate();
+  const routeChange = (path: string) => {
+    navigate(path);
+  };
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
+    if (file && file.type.startsWith('image/')) {
+      const imageUrl = URL.createObjectURL(file);
+      setState({ photo: imageUrl });
+      setState({ file: acceptedFiles[0] });
+    }
+    routeChange('/last_step');
+  }, []);
 
-    return (
-        <div className='relative flex bg-white h-[500px] w-[500px] border-dashed border-[#9d00ff] border-[8px]' {...getRootProps()}>
-            <input {...getInputProps()} />
-            <div className='flex flex-col w-full h-full items-center justify-center'>
-                {
-                    isDragActive ?
-                        <p className='text-black'>Drop the files here ...</p> :
-                        <p className='text-black text-[20px] w-[26ch] text-center'>Drag & drop your files here, or click to select files</p>
-                }
-            </div>
-            <div className='w-full flex items-center justify-center absolute bottom-[150px]'>
-                <button
-                    className='bg-[#9d00ff] px-4 py-3 rounded-sm font-bold'
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        getVideo()
-                        settakePic(true)
-                        console.log(e)
-                    }}
-                >
-                    Take a photo
-                </button>
-            </div>
-        </div>
-    )
-}
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  return (
+    <div
+      className="relative flex bg-white h-[500px] w-[500px] border-dashed border-[#9d00ff] border-[8px]"
+      {...getRootProps()}
+    >
+      <input {...getInputProps()} />
+      <div className="flex flex-col w-full h-full items-center justify-center">
+        {isDragActive ? (
+          <p className="text-black">Drop the photo here ...</p>
+        ) : (
+          <p className="text-black text-[20px] w-[26ch] text-center">
+            Drag & drop your photo here, or click to select from files
+          </p>
+        )}
+      </div>
+      <div className="w-full flex items-center justify-center absolute bottom-[150px]">
+        <button
+          className="bg-[#9d00ff] px-4 py-3 rounded-sm font-bold"
+          onClick={(e) => {
+            e.stopPropagation();
+            setState({ takePic: true });
+            getVideo();
+          }}
+        >
+          Take a photo
+        </button>
+      </div>
+    </div>
+  );
+};
