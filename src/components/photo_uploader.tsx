@@ -29,7 +29,7 @@ export const PhotoDropZone = () => {
           video.play();
         }
       })
-      .catch((err) => {
+      .catch(() => {
         Swal.fire('Someting went worng...');
       });
   };
