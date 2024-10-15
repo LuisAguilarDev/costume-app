@@ -9,18 +9,22 @@
   justify-content: center;
 }
 
-* {
-  font-family: 'Noto Color Emoji', 'Segoe UI Emoji', 'Apple Color Emoji',
-    sans-serif !important;
-}
-
 .logo {
-  transition: transform 4s ease; /* Smooth transition when hover stops */
+  transition: transform 4s ease;
   animation: glow 4s infinite ease-in-out;
 }
 
 .logo:hover {
-  transform: rotate(360deg); /* Rotate on hover */
+  transform: rotate(360deg);
+}
+
+.glow {
+  transition: transform 4s ease;
+}
+
+.glow:hover {
+  transition: transform 4s ease;
+  animation: glow 4s infinite ease-in-out;
 }
 
 @keyframes logo-spin {

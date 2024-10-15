@@ -19,3 +19,7 @@
   max-height: calc(100vh - 104px);
   height: 100%;
 }
+
+.emoji {
+  font-family: 'Noto Color Emoji' !important;
+}

@@ -8,17 +8,19 @@ export default function Navbar() {
   return (
     <div className="flex w-full justify-center items-center h-[80px]">
       <div className="flex gap-8 items-center justify-between w-[1080px] ">
-        <div className="flex items-center gap-8 pl-4">
+        <div className="flex items-center gap-6 pl-4">
           <img className="logo h-[60px] rounded-[16px]" src={logo} alt="" />
           <button
             onClick={() => {
               routeChange('/');
             }}
+            className="text-[12px] sm:text-[24px]"
           >
             DisguiseMe
           </button>
         </div>
         <button
+          className="text-[12px] sm:text-[24px]"
           onClick={() => {
             routeChange('/spooky');
           }}
@@ -30,6 +32,7 @@ export default function Navbar() {
             href="https://github.com/LuisAguilarDev/costume-app"
             target="_blank"
             rel="noopener noreferrer"
+            className="text-[12px] sm:text-[24px]"
           >
             View on GitHub
           </a>

@@ -123,7 +123,7 @@ export default function SpookyHistory() {
           onClick={() => {
             setLang('ve');
           }}
-          className="cursor-pointer"
+          className="cursor-pointer emoji"
         >
           &#x1F1FB;&#x1F1EA;
         </p>
@@ -131,7 +131,7 @@ export default function SpookyHistory() {
           onClick={() => {
             setLang('es');
           }}
-          className="cursor-pointer"
+          className="cursor-pointer emoji"
         >
           &#x1F1EA;&#x1F1F8;
         </p>
@@ -139,7 +139,7 @@ export default function SpookyHistory() {
           onClick={() => {
             setLang('en');
           }}
-          className="cursor-pointer"
+          className="cursor-pointer emoji"
         >
           &#x1F1FA;&#x1F1F8;
         </p>

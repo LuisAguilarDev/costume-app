@@ -100,7 +100,7 @@ export const PhotoDropZone = () => {
   };
 
   return (
-    <div className="flex w-full h-[700px] items-center justify-center">
+    <div className="flex w-full max-h-[700px] h-full items-center justify-center">
       {takePic ? (
         <div className="flex flex-col">
           <video className="w-full h-[500px]" ref={videoRef}></video>
