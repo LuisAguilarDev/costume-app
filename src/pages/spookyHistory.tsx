@@ -147,10 +147,10 @@ export default function SpookyHistory() {
       <p className="text-center font-bold text-[48px] text-[#9d00ff] ">
         The Story of Count Stitch
       </p>
-      <div className="w-full flex flex-col items-center justify-center">
+      <div className="w-full flex flex-col items-center justify-center px-[12px] sm:px-[0px] ">
         {histoyByLang[lang].map((historypart) => {
           return (
-            <div className="w-[80ch]">
+            <div className="max-w-[80ch]">
               <p className="text-cen">{historypart}</p>
               <br />
             </div>

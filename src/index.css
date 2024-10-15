@@ -19,7 +19,11 @@
   max-height: calc(100vh - 104px);
   height: 100%;
 }
-
+@media (max-width: 500px) {
+  .content-container {
+    max-height: auto;
+  }
+}
 .emoji {
   font-family: 'Noto Color Emoji' !important;
 }
