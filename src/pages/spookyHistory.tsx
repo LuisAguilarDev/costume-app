@@ -4,15 +4,8 @@ export default function SpookyHistory() {
     '&#x1F1FB;&#x1F1EA;', // Venezuela
     '&#x1F1FA;&#x1F1F8;', // United States
   ];
-  return (
-    <div>
-      <div className="flex">
-        {flags.map((flag) => {
-          return <p>{flag}</p>;
-        })}
-      </div>
-      <p>This is a &#x1F601;&#x1F601; emoji.</p>
-      La Historia del Conde Costura Tenebrosa En las tierras lejanas de
+  const histoyByLang = {
+    es: `La Historia del Conde Costura Tenebrosa En las tierras lejanas de
       Arvendel, en lo más profundo de un castillo abandonado por siglos, vivía
       una figura envuelta en misterio y oscuridad: el Conde Costura Tenebrosa.
       Su nombre era temido y susurrado solo en las sombras, ya que pocos habían
@@ -54,7 +47,54 @@ export default function SpookyHistory() {
       cortar el nudo que lo mantiene prisionero entre los muertos y los vivos.
       Hasta ese día, el Conde Costura Tenebrosa sigue esperando, tejiendo las
       tramas de las vidas de los incautos, mientras la oscuridad de su castillo
-      se expande lentamente por todo el reino.
+      se expande lentamente por todo el reino.`,
+    eng: [
+      `In the distant lands of Arvendel, deep within a castle abandoned for centuries, lived a figure shrouded in mystery and darkness: Count Dark Stitch. His name was feared and whispered only in the shadows, for few had survived to tell the tale of their encounters with him.`,
+
+      `In his mortal life, the count had been a renowned tailor, capable of crafting the most dazzling garments any noble could desire. It was said that his needle and thread not only sewed fabrics but also captured dreams and desires, creating clothing that offered unimaginable power and beauty. His skill soon attracted the attention of those seeking more than fashion: practitioners of dark magic.`,
+
+      `One night, under a moonless, starless sky, a mysterious client arrived at his shop. Dressed in black robes and with eyes that reflected centuries of cursed wisdom, the stranger asked the count to create a suit that would make him immortal. In exchange, he offered a pact: supernatural powers beyond human comprehension. Drawn by temptation, Count Dark Stitch accepted the deal.`,
+
+      `The tailor worked tirelessly for weeks, weaving his own fate into every stitch. He used fabrics that glowed under the moonlight, threads that seemed to whisper secrets, and needles forged in the heart of shadows. When he finished, the suit not only fulfilled the promise of immortality but also carried a curse: anyone who wore it would lose their soul, forever trapped in the dark fabric of the suit.`,
+
+      `The mysterious client, upon donning the garment, vanished into thin air, leaving only a sinister laugh. But the power of the suit did not remain dormant. Consumed by his own ambition and the pact he had made, Count Dark Stitch was transformed into a creature of the night. He was no longer a mere mortal but an immortal being condemned to wander for eternity, sewing and undoing the threads of fate.`,
+
+      `Since then, Count Dark Stitch has hidden in his castle, surrounded by empty mannequins and enchanted fabrics that seem to move on their own. To travelers who venture too close, he offers garments imbued with promises of power or eternal beauty. But there is always a price. Those who accept his clothing find their lives entangled with the dark forces woven into the thread, gradually losing their will until their souls are absorbed by the count, turning them into living puppets.`,
+
+      `It is said that the castle of Count Dark Stitch is filled with shadows that sew and unsew endlessly, whispering the names of those who fell into his trap. But it is also told that a hero could break the count’s curse if they found the thread that binds his fate and managed to cut the knot that keeps him trapped between the dead and the living.`,
+
+      `Until that day, Count Dark Stitch continues waiting, weaving the lives of the unwary, as the darkness of his castle slowly spreads across the kingdom.`,
+    ],
+  };
+  return (
+    <div>
+      <div className="flex gap-12">
+        {flags.map((flag, index) => {
+          return (
+            <p
+              onClick={() => {
+                console.log(index);
+              }}
+            >
+              {flag}
+            </p>
+          );
+        })}
+      </div>
+      <p>This is a &#x1F601;&#x1F601; emoji.</p>
+      <p className="text-center font-bold text-[48px] text-[#9d00ff] ">
+        The Story of Count Dark Stitch
+      </p>
+      <div className="w-full flex flex-col items-center justify-center">
+        {histoyByLang.eng.map((historypart) => {
+          return (
+            <div className="w-[80ch]">
+              <p className="text-cen">{historypart}</p>
+              <br />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
