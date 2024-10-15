@@ -7,9 +7,9 @@ export default function LastStep() {
   const [isDisabled, setIsDisabled] = useState(true);
   const [options, setOptions] = useState<string[]>([]);
   const setState = useStore((state) => state.setState);
+  const setResult = useStore((state) => state.setResult);
   const file = useStore((state) => state.file);
   const photo = useStore((state) => state.photo);
-  const tryAgain = useStore((state) => state.tryAgain);
   let navigate = useNavigate();
 
   const male = [
@@ -78,14 +78,14 @@ export default function LastStep() {
     const REST = new FormData();
     REST.append('file', file!);
     REST.append('costume', formData.costume);
-    const BACKEND_URL = 'http://127.0.0.1:5000/';
+    const BACKEND_URL = 'https://costume-yourself-api.onrender.com/';
     try {
       const response = await fetch(BACKEND_URL + 'upload', {
         method: 'POST',
         body: REST,
       });
       const data = await response.json();
-      setState({ result: 'data:image/jpeg;base64,' + data.response });
+      setResult('data:image/jpeg;base64,' + data.response);
       routeChange('/result');
     } catch (error) {
       Swal.fire('Something went wrog');
@@ -118,7 +118,6 @@ export default function LastStep() {
             <button
               className="bg-[#9d00ff] px-4 py-3 rounded-sm font-bold hover:text-[#3c0061]"
               onClick={() => {
-                tryAgain();
                 routeChange('/');
               }}
             >

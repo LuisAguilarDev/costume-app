@@ -8,6 +8,11 @@
   display: flex;
   justify-content: center;
 }
+
+* {
+  font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif !important;
+}
+
 .logo {
   transition: transform 4s ease; /* Smooth transition when hover stops */
   animation: glow 4s infinite ease-in-out;

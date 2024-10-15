@@ -5,6 +5,8 @@ import Home from './pages/home';
 import LastStep from './pages/lastStep';
 import Nomatch from './pages/nomatch';
 import Result from './pages/result';
+import ImageGallery from './pages/history';
+import SpookyHistory from './pages/spookyHistory';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route index element={<Home />} />
           <Route path="last_step" element={<LastStep />} />
           <Route path="result" element={<Result />} />
+          <Route path="history" element={<ImageGallery />} />
+          <Route path="spooky" element={<SpookyHistory />} />
           <Route path="*" element={<Nomatch />} />
         </Route>
       </Routes>

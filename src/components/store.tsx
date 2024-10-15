@@ -5,9 +5,11 @@ interface AppState {
   takePic: boolean;
   photo: string | null;
   file: Blob | null;
-  result: string | null;
+  result: string[];
+  currentImageindex: number;
   setState: (state: Partial<AppState>) => void;
-  tryAgain: () => void;
+  setResult: (img: string) => void;
+  setCurrentImageIndex: (number: number) => void;
 }
 
 export const useStore = create<AppState>((set) => ({
@@ -15,17 +17,20 @@ export const useStore = create<AppState>((set) => ({
   takePic: false,
   photo: null,
   file: null,
-  result: null,
+  currentImageindex: 0,
+  result: [],
   setState: (newState: Partial<AppState>) =>
     set((state) => {
       return { ...state, ...newState };
     }),
-  tryAgain: () =>
-    set((state) => {
-      return {
-        ...state,
-        ...{ photo: null, result: null, file: null, takePic: true },
-      };
+  setResult: (img: string) =>
+    set((state: AppState) => {
+      state.result.push(img);
+      return { ...state };
+    }),
+  setCurrentImageIndex: (index: number) =>
+    set((state: AppState) => {
+      return { ...state, currentImageindex: index };
     }),
 }));
 
