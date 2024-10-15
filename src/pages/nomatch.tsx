@@ -19,7 +19,7 @@ export default function Nomatch() {
         <div className="p-20">
           <button
             onClick={() => routeChange('/')}
-            className="bg-[#9d00ff] px-4 py-3 rounded-sm font-bold hover:text-[#3c0061]"
+            className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold hover:text-[#3c0061]"
           >
             Back to the haunted road
           </button>

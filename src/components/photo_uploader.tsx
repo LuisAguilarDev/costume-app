@@ -110,7 +110,7 @@ export const PhotoDropZone = () => {
                 printPicture();
                 routeChange('last_step');
               }}
-              className="bg-[#9d00ff] px-4 py-3 rounded-sm font-bold"
+              className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold"
             >
               Print Picture
             </button>

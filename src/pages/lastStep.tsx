@@ -104,9 +104,9 @@ export default function LastStep() {
   }
   return (
     <div className="flex flex-col w-full h-full max-h-[500px] items-center justify-center">
-      <div>You're Just One Step Away!</div>
       <div className="flex flex-col sm:flex-row max-h-[500px] h-full w-full">
         <div className="relative flex flex-col items-center justify-center relative max-w-[700px] w-full max-h-[500px] w-full h-full">
+          <div className="">You're just one step away</div>
           {photo ? (
             <div className="p-[12px]">
               <img
@@ -118,15 +118,15 @@ export default function LastStep() {
           ) : null}
           <div className="absolute flex gap-4 bottom-[-50px] ">
             <button
-              className="bg-[#9d00ff] px-4 py-3 rounded-sm font-bold hover:text-[#3c0061]"
+              className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold hover:text-[#60f761]"
               onClick={() => {
                 routeChange('/');
               }}
             >
-              Retake Photo!
+              Retake photo
             </button>
-            <div className="bg-[#9d00ff] px-4 py-3 rounded-sm font-bold hover:text-[#3c0061]">
-              <label htmlFor="fileInput">Select a File!</label>
+            <div className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold hover:text-[#60f761]">
+              <label htmlFor="fileInput">Select a new file</label>
               <input
                 id="fileInput"
                 className="hidden"
@@ -141,22 +141,22 @@ export default function LastStep() {
         <div className="flex flex-col items-center justify-center w-[400px] pt-[80px] sm:pt-[0px] p-2">
           <form
             action="CostumeData"
-            className="bg-[#3c0061] max-w-[400px] w-full p-2 gap-4 justify-between"
+            className="bg-[#3c0061] max-w-[400px] w-full p-4 gap-4 justify-between h-auto rounded-[8px] "
             onSubmit={handleSubmit}
           >
-            <div className="flex w-full p-2 gap-4 h-[60px] items-center justify-between">
-              <label className="text-[12px]" htmlFor="gender">
-                Select Gender
+            <div className="flex flex-col w-full p-2 gap-2 items-left pb-[40px]">
+              <label className="text-[16px]" htmlFor="gender">
+                Choose your gender
               </label>
               <select
-                className="text-[12px] w-[150px]"
+                className="text-[14px] w-full"
                 name="gender"
                 id="gender"
                 value={formData.gender}
                 onChange={handleInputChange}
               >
-                <option className="text-[12px]" disabled={true} value="">
-                  Select Gender
+                <option className="text-[16px]" disabled={true} value="">
+                  Select
                 </option>
                 <option className="text-[12px]" value="male">
                   Male
@@ -169,12 +169,12 @@ export default function LastStep() {
                 </option>
               </select>
             </div>
-            <div className="flex w-full p-2 gap-4 h-[60px] items-center justify-between">
-              <label htmlFor="Costume" className="text-[12px]">
-                Choose a Costume
+            <div className="flex flex-col w-full p-2 gap-2 items-left pb-[40px]">
+              <label htmlFor="Costume" className="text-[16px]">
+                Choose your costume
               </label>
               <select
-                className="text-[12px] w-[150px]"
+                className="text-[14px] w-full"
                 disabled={isDisabled}
                 name="costume"
                 id="costume"
@@ -182,7 +182,7 @@ export default function LastStep() {
                 onChange={handleInputChange}
               >
                 <option className="text-[12px]" value="" disabled={true}>
-                  Select Costume
+                  Select
                 </option>
                 {options.length > 0
                   ? options.map((item) => {
@@ -197,10 +197,10 @@ export default function LastStep() {
             </div>
             <div className="flex items-center justify-center max-h-[48px] ">
               <button
-                className="bg-[#9d00ff] px-4 py-3 rounded-sm font-bold"
+                className="bg-[#60f761] text-[#131213] text-[14px] px-4 py-3 rounded-[16px] font-bold"
                 type="submit"
               >
-                Transform Me Now!
+                Transform me now
               </button>
             </div>
           </form>

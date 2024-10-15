@@ -33,7 +33,7 @@ export default function Result() {
                 onClick={() => {
                   routeChange('/last_step');
                 }}
-                className="bg-[#9d00ff] px-4 py-3 rounded-sm font-bold"
+                className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold"
               >
                 Transform Another Image!
               </button>
@@ -41,7 +41,7 @@ export default function Result() {
                 onClick={() => {
                   download();
                 }}
-                className="bg-[#9d00ff] px-4 py-3 rounded-sm font-bold"
+                className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold"
               >
                 Download
               </button>
@@ -51,7 +51,7 @@ export default function Result() {
                 onClick={() => {
                   routeChange('/history');
                 }}
-                className="bg-[#9d00ff] px-4 py-3 rounded-sm font-bold"
+                className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold"
               >
                 view all!
               </button>

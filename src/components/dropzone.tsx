@@ -23,29 +23,31 @@ export const MyDropzone = ({ getVideo }: { getVideo: Function }) => {
 
   return (
     <div
-      className="relative flex bg-white h-[500px] w-[500px] border-dashed border-[#9d00ff] border-[8px] glow"
+      className="relative flex bg-white h-[420px] w-[420px] border-dashed border-[#9d00ff] border-[8px] glow"
       {...getRootProps()}
     >
       <input {...getInputProps()} />
       <div className="flex flex-col w-full h-full items-center justify-center">
         {isDragActive ? (
-          <p className="text-black font-bold">Drop the photo here ...</p>
+          <p className="text-black font-bold text-[18px]">
+            Drop the photo here...
+          </p>
         ) : (
-          <p className="text-black font-bold text-[20px] w-[26ch] text-center">
+          <p className="text-black font-bold text-[18px] w-[26ch] text-center">
             Drag & drop your photo here, or click to select from files
           </p>
         )}
       </div>
-      <div className="w-full flex items-center justify-center absolute bottom-[150px]">
+      <div className="w-full flex items-center justify-center absolute bottom-[100px]">
         <button
-          className="bg-[#9d00ff] px-4 py-3 rounded-sm font-bold"
+          className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold"
           onClick={(e) => {
             e.stopPropagation();
             setState({ takePic: true });
             getVideo();
           }}
         >
-          Take a photo
+          Disguise me
         </button>
       </div>
     </div>
