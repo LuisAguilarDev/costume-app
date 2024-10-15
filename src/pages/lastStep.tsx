@@ -105,14 +105,16 @@ export default function LastStep() {
   return (
     <div className="flex flex-col w-full h-full max-h-[500px] items-center justify-center">
       <div>You're Just One Step Away!</div>
-      <div className="flex max-h-[500px] h-full w-full">
+      <div className="flex flex-col sm:flex-row max-h-[500px] h-full w-full">
         <div className="relative flex flex-col items-center justify-center relative max-w-[700px] w-full max-h-[500px] w-full h-full">
           {photo ? (
-            <img
-              className="w-full max-w-[500px] max-h-[500px] h-full object-contain"
-              src={photo}
-              alt="user_photo"
-            />
+            <div className="p-[12px]">
+              <img
+                className="w-full max-w-[500px] max-h-[500px] h-full object-contain"
+                src={photo}
+                alt="user_photo"
+              />
+            </div>
           ) : null}
           <div className="absolute flex gap-4 bottom-[-50px] ">
             <button
@@ -136,7 +138,7 @@ export default function LastStep() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center w-[400px] p-2">
+        <div className="flex flex-col items-center justify-center w-[400px] pt-[80px] sm:pt-[0px] p-2">
           <form
             action="CostumeData"
             className="bg-[#3c0061] max-w-[400px] w-full p-2 gap-4 justify-between"

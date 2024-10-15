@@ -14,13 +14,13 @@ export default function Navbar() {
             onClick={() => {
               routeChange('/');
             }}
-            className="text-[12px] sm:text-[24px]"
+            className="text-[12px] sm:text-[18px]"
           >
             DisguiseMe
           </button>
         </div>
         <button
-          className="text-[12px] sm:text-[24px]"
+          className="text-[12px] sm:text-[18px]"
           onClick={() => {
             routeChange('/spooky');
           }}
@@ -32,7 +32,7 @@ export default function Navbar() {
             href="https://github.com/LuisAguilarDev/costume-app"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[12px] sm:text-[24px]"
+            className="text-[12px] sm:text-[18px]"
           >
             View on GitHub
           </a>

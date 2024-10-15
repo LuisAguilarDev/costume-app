@@ -2,20 +2,27 @@ import { useEffect, useState } from 'react';
 
 export default function Loader() {
   const messages = [
-    'Hola estoy trabajando',
-    'no cierres la ventana es algo lento',
-    'calma espera un poco',
+    'Patience weaves the finest threads.',
+    'A masterpiece takes time.',
+    'The magic is in the details, just a moment more.',
+    'Hold still, greatness is nearly sewn.',
+    'Even the darkest fabric needs precision.',
+    'Your transformation is nearly complete.',
+    'Perfection requires a few more stitches.',
+    'The final touch is almost ready.',
+    'Just a stitch away from your new self.',
+    "Trust in the craft, it's worth the wait.",
   ];
   const [message, setMessage] = useState(messages[0]);
 
   function updateMessage() {
     let index = 0;
     const intervalId = setInterval(() => {
-      index = (index + 1) % messages.length; // Cicla entre los mensajes
+      index = (index + 1) % messages.length;
       setMessage(messages[index]);
-    }, 3000); // Cambia el mensaje cada 3 segundos
+    }, 5000);
 
-    return () => clearInterval(intervalId); // Limpia el intervalo cuando el componente se desmonta
+    return () => clearInterval(intervalId);
   }
 
   useEffect(() => {
