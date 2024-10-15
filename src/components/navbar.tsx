@@ -23,7 +23,7 @@ export default function Navbar() {
             routeChange('/spooky');
           }}
         >
-          Spooky History!
+          Read the history!
         </button>
         <button>
           <a

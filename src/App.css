@@ -10,7 +10,8 @@
 }
 
 * {
-  font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif !important;
+  font-family: 'Noto Color Emoji', 'Segoe UI Emoji', 'Apple Color Emoji',
+    sans-serif !important;
 }
 
 .logo {
