@@ -13,7 +13,7 @@ interface AppState {
 }
 
 export const useStore = create<AppState>((set) => ({
-  loading: true,
+  loading: false,
   takePic: false,
   photo: null,
   file: null,
