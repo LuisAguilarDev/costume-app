@@ -149,22 +149,29 @@ export default function LastStep() {
                 Choose your gender
               </label>
               <select
-                className="text-[14px] w-full"
+                className="text-[14px] w-full text-[#222222]"
                 name="gender"
                 id="gender"
                 value={formData.gender}
                 onChange={handleInputChange}
               >
-                <option className="text-[16px]" disabled={true} value="">
+                <option
+                  className="text-[16px] text-black"
+                  disabled={true}
+                  value=""
+                >
                   Select
                 </option>
-                <option className="text-[12px]" value="male">
+                <option className="text-[12px] text-black!" value="male">
                   Male
                 </option>
-                <option className="text-[12px]" value="female">
+                <option className="text-[12px] text-black" value="female">
                   Female
                 </option>
-                <option className="text-[12px]" value="prefer not to say">
+                <option
+                  className="text-[12px] text-black"
+                  value="prefer not to say"
+                >
                   Prefer not to say
                 </option>
               </select>
@@ -174,7 +181,7 @@ export default function LastStep() {
                 Choose your costume
               </label>
               <select
-                className="text-[14px] w-full"
+                className="text-[14px] w-full text-[#222222]"
                 disabled={isDisabled}
                 name="costume"
                 id="costume"
