@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function SpookyHistory() {
+export default function SpookyStory() {
   const [lang, setLang] = useState<LanguageKeys>('en');
   type LanguageKeys = 'es' | 'en' | 've';
   const histoyByLang: { es: string[]; en: string[]; ve: string[] } = {
@@ -117,7 +117,7 @@ export default function SpookyHistory() {
     ],
   };
   return (
-    <div>
+    <>
       <div className="flex items-center w-full justify-center gap-12">
         <p
           onClick={() => {
@@ -151,12 +151,14 @@ export default function SpookyHistory() {
         {histoyByLang[lang].map((historypart) => {
           return (
             <div className="max-w-[80ch]">
-              <p className="text-cen">{historypart}</p>
+              <p id={historypart} className="text-cen">
+                {historypart}
+              </p>
               <br />
             </div>
           );
         })}
       </div>
-    </div>
+    </>
   );
 }

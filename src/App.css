@@ -7,6 +7,17 @@
   height: 100svh;
   display: flex;
   justify-content: center;
+  max-width: 100%;
+  scrollbar-color: #60f761 #9d00ff;
+  transition: scrollbar-color 0.3s ease-out;
+  scrollbar-gutter: stable both-edges;
+  scrollbar-width: 200px;
+}
+* {
+  color: white;
+}
+::-webkit-scrollbar {
+  width: 50px;
 }
 
 .logo {

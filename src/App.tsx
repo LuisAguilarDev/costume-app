@@ -6,7 +6,7 @@ import LastStep from './pages/lastStep';
 import Nomatch from './pages/nomatch';
 import Result from './pages/result';
 import ImageGallery from './pages/history';
-import SpookyHistory from './pages/spookyHistory';
+import SpookyStory from './pages/spookyStory';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route path="last_step" element={<LastStep />} />
           <Route path="result" element={<Result />} />
           <Route path="history" element={<ImageGallery />} />
-          <Route path="spooky" element={<SpookyHistory />} />
+          <Route path="spooky" element={<SpookyStory />} />
           <Route path="*" element={<Nomatch />} />
         </Route>
       </Routes>
