@@ -7,7 +7,7 @@ export default function Navbar() {
   };
   return (
     <div className="flex w-full justify-center items-center h-[80px]">
-      <div className="flex gap-8 items-center justify-between w-[1080px] ">
+      <div className="flex pl-[8px] md:pl-[0px] gap-8 items-center justify-between w-[1080px] ">
         <img
           onClick={() => {
             routeChange('/');
