@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default function LastStep() {
   const [formData, setFormData] = useState({ gender: '', costume: '' });
   const [isDisabled, setIsDisabled] = useState(true);
+  const [disabledSubmit, setDisabledSubmit] = useState(true);
   const [options, setOptions] = useState<string[]>([]);
   const setState = useStore((state) => state.setState);
   const setResult = useStore((state) => state.setResult);
@@ -48,6 +49,7 @@ export default function LastStep() {
     'Astronaut',
     'Robot',
   ];
+
   const routeChange = (path: string) => {
     navigate(path);
   };
@@ -57,6 +59,9 @@ export default function LastStep() {
       ...formData,
       [name]: value,
     });
+    if (name === 'costume') {
+      setDisabledSubmit(false);
+    }
     if (name === 'gender') {
       setIsDisabled(false);
       setCostumes(value);
@@ -116,7 +121,7 @@ export default function LastStep() {
               />
             </div>
           ) : null}
-          <div className="absolute flex gap-4 bottom-[-50px] ">
+          <div className="md:absolute flex gap-4 bottom-[-50px] ">
             <button
               className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold hover:text-[#60f761]"
               onClick={() => {
@@ -138,7 +143,7 @@ export default function LastStep() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center w-[400px] pt-[80px] sm:pt-[0px] p-2">
+        <div className="flex flex-col items-center justify-center w-full md:w-[400px] sm:pt-[80px] pt-[20px] p-2">
           <form
             action="CostumeData"
             className="bg-[#3c0061] max-w-[400px] w-full p-4 gap-4 justify-between h-auto rounded-[8px] "
@@ -149,27 +154,28 @@ export default function LastStep() {
                 Choose your gender
               </label>
               <select
-                className="text-[14px] w-full text-[#222222]"
+                className="text-[14px] w-full bg-white text-[#222222]"
                 name="gender"
                 id="gender"
                 value={formData.gender}
                 onChange={handleInputChange}
               >
                 <option
-                  className="text-[16px] text-black"
+                  className="text-[16px] text-[#222222]"
                   disabled={true}
+                  selected={true}
                   value=""
                 >
                   Select
                 </option>
-                <option className="text-[12px] text-black!" value="male">
+                <option className="text-[12px] text-[#222222]" value="male">
                   Male
                 </option>
-                <option className="text-[12px] text-black" value="female">
+                <option className="text-[12px] text-[#222222]" value="female">
                   Female
                 </option>
                 <option
-                  className="text-[12px] text-black"
+                  className="text-[12px] text-[#222222]"
                   value="prefer not to say"
                 >
                   Prefer not to say
@@ -181,20 +187,29 @@ export default function LastStep() {
                 Choose your costume
               </label>
               <select
-                className="text-[14px] w-full text-[#222222]"
+                className="text-[14px] w-full bg-white text-[#222222]"
                 disabled={isDisabled}
                 name="costume"
                 id="costume"
                 value={formData.costume}
                 onChange={handleInputChange}
               >
-                <option className="text-[12px]" value="" disabled={true}>
+                <option
+                  className="text-[12px]  text-[#222222]"
+                  value=""
+                  disabled={true}
+                  selected={true}
+                >
                   Select
                 </option>
                 {options.length > 0
                   ? options.map((item) => {
                       return (
-                        <option className="text-[12px]" key={item} value={item}>
+                        <option
+                          className="text-[12px] text-[#222222]"
+                          key={item}
+                          value={item}
+                        >
                           {item}
                         </option>
                       );
@@ -202,10 +217,13 @@ export default function LastStep() {
                   : null}
               </select>
             </div>
-            <div className="flex items-center justify-center max-h-[48px] ">
+            <div className="flex items-center justify-center max-h-[48px] p-[8px] ">
               <button
-                className="bg-[#60f761] text-[#131213] text-[14px] px-4 py-3 rounded-[16px] font-bold"
+                className={`bg-[#60f761] text-[#131213] text-[14px] px-4 py-3 rounded-[16px] font-bold ${
+                  disabledSubmit ? 'text-[#600000]! bg-[#607700]' : ''
+                }`}
                 type="submit"
+                disabled={disabledSubmit}
               >
                 Transform me now
               </button>

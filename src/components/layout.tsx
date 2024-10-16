@@ -9,7 +9,7 @@ export default function Layout() {
     <>
       {loading ? <Loader /> : null}
       <Navbar />
-      <div className="flex flex-col h-full content-container justify-between pt-8">
+      <div className="flex flex-col h-full content-container justify-between pt-[0px] md:pt-8">
         <Outlet />
         <Footer />
       </div>
