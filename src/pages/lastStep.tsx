@@ -109,11 +109,11 @@ export default function LastStep() {
   }
   return (
     <div className="flex flex-col w-full h-full max-h-[500px] items-center justify-center">
-      <div className="flex flex-col sm:flex-row max-h-[500px] h-full w-full">
-        <div className="relative flex flex-col items-center justify-center relative max-w-[700px] w-full max-h-[500px] w-full h-full">
+      <div className="flex flex-col sm:flex-row h-full w-full max-h-[500px]">
+        <div className="relative flex flex-col items-center justify-center max-w-[700px] w-full h-full">
           <div className="">You're just one step away</div>
           {photo ? (
-            <div className="p-[12px]">
+            <div className="p-[12px] w-auto">
               <img
                 className="w-full max-w-[500px] max-h-[500px] h-full object-contain"
                 src={photo}
