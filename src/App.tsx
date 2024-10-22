@@ -10,7 +10,7 @@ import SpookyStory from './pages/spookyStory';
 
 function App() {
   return (
-    <div className="relative w-full h-full m:w-full lg:w-[1024px]">
+    <div className="relative min-h-full w-full h-full m:w-full lg:w-[1024px]">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

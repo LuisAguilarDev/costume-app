@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useStore } from './store';
 
 export default function Loader() {
   const messages = [
@@ -14,28 +15,34 @@ export default function Loader() {
     "Trust in the craft, it's worth the wait.",
   ];
   const [message, setMessage] = useState(messages[0]);
-
+  const loading = useStore((state) => state.loading);
   function updateMessage() {
     let index = 0;
     const intervalId = setInterval(() => {
       index = (index + 1) % messages.length;
       setMessage(messages[index]);
     }, 5000);
-
+    document.body.classList.remove('no-scroll');
     return () => clearInterval(intervalId);
   }
 
   useEffect(() => {
-    const cleanup = updateMessage(); // Llama a la función cuando se monta el componente
+    const cleanup = updateMessage();
+    document.body.classList.remove('no-scroll');
+    if (loading) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
     return cleanup; // Limpia el intervalo cuando el componente se desmonta
-  }, []);
+  }, [loading]);
   return (
     <div
-      id="loader-overlay"
+      id="loader-overlay no-scroll"
       className="fixed inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 z-50 gap-8"
     >
-      <div>{message}</div>
-      <div className="loader"></div>
+      <div className="no-scroll">{message}</div>
+      <div className="loader no-scroll"></div>
     </div>
   );
 }

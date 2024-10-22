@@ -77,10 +77,12 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
   z-index: 9999; /* Make sure it's on top of other elements */
+  overflow: hidden !important;
+  pointer-events: none;
 }
 
 body.no-scroll {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .loader {
@@ -90,6 +92,8 @@ body.no-scroll {
   border-radius: 50%;
   color: #9d00ff;
   animation: fill 1s ease-in infinite alternate;
+  overflow: hidden !important;
+  pointer-events: none;
 }
 
 .loader::before,
@@ -102,12 +106,16 @@ body.no-scroll {
   left: 48px;
   top: 0;
   animation: fill 0.9s ease-in infinite alternate;
+  overflow: hidden !important;
+  pointer-events: none;
 }
 
 .loader::after {
   left: auto;
   right: 48px;
   animation-duration: 1.1s;
+  overflow: hidden !important;
+  pointer-events: none;
 }
 
 @keyframes fill {
@@ -116,5 +124,11 @@ body.no-scroll {
   }
   100% {
     box-shadow: 0 0 0 10px inset;
+  }
+}
+@media (max-width: 500px) {
+  #root {
+    height: unset;
+    min-height: 100svh;
   }
 }

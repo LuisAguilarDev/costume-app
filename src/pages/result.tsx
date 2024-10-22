@@ -22,7 +22,7 @@ export default function Result() {
       {result ? (
         <>
           <img
-            className="w-full h-[400px] object-contain"
+            className="w-full pt-[24px] sm:pt-[0px] h-[400px] object-contain"
             src={result[result.length - 1]}
             alt="costume_photo"
           />{' '}

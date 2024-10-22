@@ -108,127 +108,129 @@ export default function LastStep() {
     setState({ file: e.target.files[0] });
   }
   return (
-    <div className="flex flex-col w-full h-full max-h-[500px] items-center justify-center">
-      <div className="flex flex-col sm:flex-row h-full w-full max-h-[500px]">
-        <div className="relative flex flex-col items-center justify-center max-w-[700px] w-full h-full">
-          <div className="">You're just one step away</div>
-          {photo ? (
-            <div className="p-[12px] w-auto">
-              <img
-                className="w-full max-w-[500px] max-h-[500px] h-full object-contain"
-                src={photo}
-                alt="user_photo"
-              />
-            </div>
-          ) : null}
-          <div className="md:absolute flex gap-4 bottom-[-50px] ">
-            <button
-              className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold hover:text-[#60f761]"
-              onClick={() => {
-                routeChange('/');
-              }}
-            >
-              Retake photo
-            </button>
-            <div className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold hover:text-[#60f761]">
-              <label htmlFor="fileInput">Select a new file</label>
-              <input
-                id="fileInput"
-                className="hidden"
-                onChange={(e) => {
-                  getFile(e);
+    <div className="flex flex-col w-full h-full items-center justify-center">
+      <div className="p-[24px] ">You're just one step away</div>
+      <div className="flex flex-col h-full w-full sm:flex-row">
+        <div className="flex flex-col md:flex-row">
+          <div className="flex flex-col items-center justify-center w-full h-auto md:max-w-[700px]">
+            {photo ? (
+              <div className="p-[12px] w-full h-full max-w-[500px] max-h-[500px]">
+                <img
+                  className="w-full max-w-[500px] max-h-[500px] h-full object-contain"
+                  src={photo}
+                  alt="user_photo"
+                />
+              </div>
+            ) : null}
+            <div className="flex gap-4 mt-[24px] md:mt-[0px] ">
+              <button
+                className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold hover:text-[#60f761]"
+                onClick={() => {
+                  routeChange('/');
                 }}
-                type="file"
-              />
+              >
+                Retake photo
+              </button>
+              <div className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold hover:text-[#60f761]">
+                <label htmlFor="fileInput">Select a new file</label>
+                <input
+                  id="fileInput"
+                  className="hidden"
+                  onChange={(e) => {
+                    getFile(e);
+                  }}
+                  type="file"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col items-center justify-center w-full md:w-[400px] sm:pt-[80px] pt-[20px] p-2">
-          <form
-            action="CostumeData"
-            className="bg-[#3c0061] max-w-[400px] w-full p-4 gap-4 justify-between h-auto rounded-[8px] "
-            onSubmit={handleSubmit}
-          >
-            <div className="flex flex-col w-full p-2 gap-2 items-left pb-[40px]">
-              <label className="text-[16px]" htmlFor="gender">
-                Choose your gender
-              </label>
-              <select
-                className="text-[14px] w-full bg-white text-[#222222]"
-                name="gender"
-                id="gender"
-                value={formData.gender}
-                onChange={handleInputChange}
-              >
-                <option
-                  className="text-[16px] text-[#222222]"
-                  disabled={true}
-                  selected={true}
-                  value=""
+          <div className="flex flex-col h-auto items-center justify-center w-full md:w-[400px] pt-[20px] sm:pt-[0px] sm:mb-[24px] p-2">
+            <form
+              action="CostumeData"
+              className="bg-[#3c0061] max-w-[400px] w-full p-4 gap-4 justify-between h-auto rounded-[8px] "
+              onSubmit={handleSubmit}
+            >
+              <div className="flex flex-col w-full p-2 gap-2 items-left pb-[40px]">
+                <label className="text-[16px]" htmlFor="gender">
+                  Choose your gender
+                </label>
+                <select
+                  className="text-[14px] w-full bg-white text-[#222222]"
+                  name="gender"
+                  id="gender"
+                  value={formData.gender}
+                  onChange={handleInputChange}
                 >
-                  Select
-                </option>
-                <option className="text-[12px] text-[#222222]" value="male">
-                  Male
-                </option>
-                <option className="text-[12px] text-[#222222]" value="female">
-                  Female
-                </option>
-                <option
-                  className="text-[12px] text-[#222222]"
-                  value="prefer not to say"
+                  <option
+                    className="text-[16px] text-[#222222]"
+                    disabled={true}
+                    selected={true}
+                    value=""
+                  >
+                    Select
+                  </option>
+                  <option className="text-[12px] text-[#222222]" value="male">
+                    Male
+                  </option>
+                  <option className="text-[12px] text-[#222222]" value="female">
+                    Female
+                  </option>
+                  <option
+                    className="text-[12px] text-[#222222]"
+                    value="prefer not to say"
+                  >
+                    Prefer not to say
+                  </option>
+                </select>
+              </div>
+              <div className="flex flex-col w-full p-2 gap-2 items-left pb-[40px]">
+                <label htmlFor="Costume" className="text-[16px]">
+                  Choose your costume
+                </label>
+                <select
+                  className="text-[14px] w-full bg-white text-[#222222]"
+                  disabled={isDisabled}
+                  name="costume"
+                  id="costume"
+                  value={formData.costume}
+                  onChange={handleInputChange}
                 >
-                  Prefer not to say
-                </option>
-              </select>
-            </div>
-            <div className="flex flex-col w-full p-2 gap-2 items-left pb-[40px]">
-              <label htmlFor="Costume" className="text-[16px]">
-                Choose your costume
-              </label>
-              <select
-                className="text-[14px] w-full bg-white text-[#222222]"
-                disabled={isDisabled}
-                name="costume"
-                id="costume"
-                value={formData.costume}
-                onChange={handleInputChange}
-              >
-                <option
-                  className="text-[12px]  text-[#222222]"
-                  value=""
-                  disabled={true}
-                  selected={true}
+                  <option
+                    className="text-[12px]  text-[#222222]"
+                    value=""
+                    disabled={true}
+                    selected={true}
+                  >
+                    Select
+                  </option>
+                  {options.length > 0
+                    ? options.map((item) => {
+                        return (
+                          <option
+                            className="text-[12px] text-[#222222]"
+                            key={item}
+                            value={item}
+                          >
+                            {item}
+                          </option>
+                        );
+                      })
+                    : null}
+                </select>
+              </div>
+              <div className="flex items-center justify-center max-h-[48px] p-[8px] ">
+                <button
+                  className={`bg-[#60f761] text-[#131213] text-[14px] px-4 py-3 rounded-[16px] font-bold ${
+                    disabledSubmit ? 'text-[#600000]! bg-[#607700]' : ''
+                  }`}
+                  type="submit"
+                  disabled={disabledSubmit}
                 >
-                  Select
-                </option>
-                {options.length > 0
-                  ? options.map((item) => {
-                      return (
-                        <option
-                          className="text-[12px] text-[#222222]"
-                          key={item}
-                          value={item}
-                        >
-                          {item}
-                        </option>
-                      );
-                    })
-                  : null}
-              </select>
-            </div>
-            <div className="flex items-center justify-center max-h-[48px] p-[8px] ">
-              <button
-                className={`bg-[#60f761] text-[#131213] text-[14px] px-4 py-3 rounded-[16px] font-bold ${
-                  disabledSubmit ? 'text-[#600000]! bg-[#607700]' : ''
-                }`}
-                type="submit"
-                disabled={disabledSubmit}
-              >
-                Transform me now
-              </button>
-            </div>
-          </form>
+                  Transform me now
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
