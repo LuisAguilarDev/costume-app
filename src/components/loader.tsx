@@ -15,27 +15,19 @@ export default function Loader() {
     "Trust in the craft, it's worth the wait.",
   ];
   const [message, setMessage] = useState(messages[0]);
-  const loading = useStore((state) => state.loading);
   function updateMessage() {
     let index = 0;
     const intervalId = setInterval(() => {
       index = (index + 1) % messages.length;
       setMessage(messages[index]);
     }, 5000);
-    document.body.classList.remove('no-scroll');
     return () => clearInterval(intervalId);
   }
 
   useEffect(() => {
     const cleanup = updateMessage();
-    document.body.classList.remove('no-scroll');
-    if (loading) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
     return cleanup; // Limpia el intervalo cuando el componente se desmonta
-  }, [loading]);
+  }, []);
   return (
     <div
       id="loader-overlay no-scroll"
