@@ -60,10 +60,10 @@ export const PhotoDropZone = () => {
   };
 
   const printPicture = () => {
-    const width = 400;
-    const height = width / (16 / 9);
     let video = videoRef.current!;
     let photo = photoRef.current!;
+    const width = video.videoWidth;
+    const height = video.videoHeight;
     photo.width = width;
     photo.height = height;
     let ctx = photo.getContext('2d')!;
@@ -75,28 +75,6 @@ export const PhotoDropZone = () => {
       setState({ file: file, photo: imageUrl, takePic: false });
       stopVideo();
     }, 'image/jpeg');
-    // }
-    // if (option === "replace") {
-    //   setState({ takePic: false });
-    //   const width = 400;
-    //   const height = width / (16 / 9);
-    //   let video = videoRef.current!;
-    //   let photo = photoRef.current!;
-    //   photo.width = width;
-    //   photo.height = height;
-    //   let ctx = photo.getContext("2d")!;
-    //   ctx.drawImage(video, 0, 0, width, height);
-    //   photo.toBlob(async function (blob) {
-    //     if (!blob) return Swal.fire("Camera not found");
-    //     let file = new File([blob], "image.jpg", { type: "image/jpeg" });
-    //     const imageUrl = URL.createObjectURL(file);
-    //     setState({ file: file })
-    //     setState({ photo: imageUrl })
-    //     stopVideo();
-    //   }, "image/jpeg");
-    //   //
-    //   setCameraReplace(false);
-    // }
   };
 
   return (
