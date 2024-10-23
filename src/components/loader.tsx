@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useStore } from './store';
 
 export default function Loader() {
   const messages = [
