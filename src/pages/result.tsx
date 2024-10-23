@@ -22,7 +22,7 @@ export default function Result() {
       {result ? (
         <>
           <div className="p-[12px] flex items-center justify-center">
-            <h1 className="w-[65ch] text-center">
+            <h1 className="w-[65ch] text-center iniria">
               Count Stitch stands before you, needle in hand, ready to weave
               your darkest dreams into reality! 'Your haunting transformation
               awaits.
