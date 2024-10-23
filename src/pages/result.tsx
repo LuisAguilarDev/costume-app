@@ -34,7 +34,7 @@ export default function Result() {
             alt="costume_photo"
           />{' '}
           <div className="flex flex-col justify-center items-center p-8 gap-8">
-            <p>Ask Count Stitch 🧛‍♂️ to:</p>
+            <p className="iniria">Ask Count Stitch 🧛‍♂️ to:</p>
             <div className="flex gap-8">
               <button
                 onClick={() => {
@@ -42,7 +42,7 @@ export default function Result() {
                 }}
                 className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold"
               >
-                Transform Another Image!
+                <span className="iniria">Transform Another Image!</span>
               </button>
               <button
                 onClick={() => {
@@ -50,7 +50,7 @@ export default function Result() {
                 }}
                 className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold"
               >
-                Download
+                <span className="iniria">Download</span>
               </button>
             </div>
             {result.length > 1 ? (
@@ -60,7 +60,7 @@ export default function Result() {
                 }}
                 className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold"
               >
-                view all!
+                <span className="iniria">View all!</span>
               </button>
             ) : null}
           </div>
