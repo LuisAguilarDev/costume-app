@@ -21,8 +21,15 @@ export default function Result() {
     <div>
       {result ? (
         <>
+          <div className="p-[12px] flex items-center justify-center">
+            <h1 className="w-[65ch] text-center">
+              Count Stitch stands before you, needle in hand, ready to weave
+              your darkest dreams into reality! 'Your haunting transformation
+              awaits.
+            </h1>
+          </div>
           <img
-            className="w-full pt-[24px] sm:pt-[0px] h-[400px] object-contain"
+            className="w-full px-[12px] pt-[24px] sm:pt-[0px] h-[400px] object-contain"
             src={result[result.length - 1]}
             alt="costume_photo"
           />{' '}

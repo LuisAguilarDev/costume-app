@@ -144,13 +144,13 @@ export default function SpookyStory() {
           &#x1F1FA;&#x1F1F8;
         </p>
       </div>
-      <p className="text-center font-bold text-[48px] text-[#9d00ff] ">
+      <p className="text-center font-bold text-[48px] text-[#9d00ff] iniria">
         The Story of Count Stitch
       </p>
-      <div className="w-full flex flex-col items-center justify-center px-[12px] sm:px-[0px] ">
+      <div className="w-full flex flex-col items-center justify-center px-[12px] sm:px-[0px] iniria">
         {histoyByLang[lang].map((historypart) => {
           return (
-            <div className="max-w-[80ch]">
+            <div className="max-w-[65ch]">
               <p id={historypart} className="text-cen">
                 {historypart}
               </p>

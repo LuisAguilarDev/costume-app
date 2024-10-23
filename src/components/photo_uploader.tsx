@@ -78,9 +78,9 @@ export const PhotoDropZone = () => {
   };
 
   return (
-    <div className="flex w-full max-h-[700px] h-full items-center justify-center">
+    <div className="flex w-full h-full items-center justify-center">
       {takePic ? (
-        <div className="flex flex-col">
+        <div className="flex flex-col h-full items-center justify-center">
           <video className="w-full h-[500px]" ref={videoRef}></video>
           <div className="flex items-center justify-center p-8">
             <button
@@ -88,7 +88,7 @@ export const PhotoDropZone = () => {
                 printPicture();
                 routeChange('last_step');
               }}
-              className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold"
+              className="bg-[#9d00ff] px-4 py-3 rounded-[16px] text-[#60f761] font-bold iniria hover:text-[#320C4B] "
             >
               Print Picture
             </button>

@@ -8,7 +8,20 @@ export default function Home() {
     <>
       {!takePic ? (
         <header className="flex flex-col items-center w-full">
-          <div className="w-full p-[12px] sm:w-[62ch]">
+          <div className="flex items-center justify-center w-full">
+            <h1 className="text-center">
+              <span className="titleFrozen  leading-1 text-[27px] text-[#60f761]">
+                Unleash Your Inner
+              </span>
+              <br />
+              <span className="titleFrozen text-[62px] leading-[36px] text-[#9D00FF] line">
+                Spooky Halloween
+              </span>
+              <br />
+              <span className="text-[22px]">Spirit with Count Stitch!</span>
+            </h1>
+          </div>
+          <div className="w-full p-[12px] sm:w-[62ch] text-[14px] ">
             <p>
               Count Stitch is ready to craft a hauntingly beautiful costume just
               for you, bringing your wildest Halloween fantasies to life!

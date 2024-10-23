@@ -2,7 +2,8 @@ import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useStore } from './store';
 import { useNavigate } from 'react-router-dom';
-
+import Button from './button';
+import devil from './../assets/devil.svg';
 export const MyDropzone = ({ getVideo }: { getVideo: Function }) => {
   const setState = useStore((state) => state.setState);
   let navigate = useNavigate();
@@ -23,32 +24,37 @@ export const MyDropzone = ({ getVideo }: { getVideo: Function }) => {
 
   return (
     <div
-      className="relative flex bg-white h-[420px] w-[420px] border-dashed border-[#9d00ff] border-[8px] glow"
+      className="relative flex bg-[#320C4B] h-[420px] w-[420px] rounded-[35px] glow"
       {...getRootProps()}
     >
       <input {...getInputProps()} />
       <div className="flex flex-col w-full h-full items-center justify-center">
+        <img src={devil} alt="devil emoji" />
         {isDragActive ? (
-          <p className="text-black font-bold text-[18px]">
+          <p className="text-black font-bold text-[37px] titleFrozen">
             Drop the photo here...
           </p>
         ) : (
-          <p className="text-black font-bold text-[18px] w-[26ch] text-center">
-            Drag & drop your photo here, or click to select from files
+          <p className="text-black font-bold text-[18px] w-[26ch] text-center ">
+            <span className="titleFrozen text-[#E3B6FF] text-[37px]">
+              Drag & drop
+            </span>
+            <br />
+            <span className="text[#E5BDFF]">
+              your photo here, or click to select from files
+            </span>
           </p>
         )}
       </div>
-      <div className="w-full flex items-center justify-center absolute bottom-[100px]">
-        <button
-          className="bg-[#9d00ff] px-4 py-3 rounded-[16px] font-bold"
+      <div className="w-full flex items-center justify-center absolute bottom-[50px]">
+        <Button
           onClick={(e) => {
             e.stopPropagation();
             setState({ takePic: true });
             getVideo();
           }}
-        >
-          Disguise me
-        </button>
+          text="Disguise me"
+        />
       </div>
     </div>
   );

@@ -17,10 +17,19 @@
     font-display: block; /* This property will help us not flash unstyled text for a couple hundred milliseconds, and then it would act like font-display: swap*/
     src: url('/fonts/GhoulFriAOE.ttf') format('woff2');
   }
+  @font-face {
+    font-family: 'Frozen';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block; /* This property will help us not flash unstyled text for a couple hundred milliseconds, and then it would act like font-display: swap*/
+    src: url('/fonts/Frozen.ttf') format('woff2');
+  }
 }
-
+.titleFrozen {
+  font-family: 'Frozen', 'Iniria Sans';
+}
 :root {
-  font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+  font-family: 'Iniria Sans', 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -47,6 +56,9 @@
   font-family: 'Open sans', 'Apple Color Emoji', sans-serif;
 }
 
+.iniria {
+  font-family: 'Inria Sans';
+}
 * {
   box-sizing: border-box;
 }
