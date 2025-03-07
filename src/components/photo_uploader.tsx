@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 export const PhotoDropZone = () => {
   const takePic = useStore((state) => state.takePic);
   const setState = useStore((state) => state.setState);
-  let videoRef = useRef<HTMLVideoElement | null>(null);
-  let photoRef = useRef<HTMLCanvasElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const photoRef = useRef<HTMLCanvasElement | null>(null);
   const mediaStreamRef = useRef<MediaStream | null>(null);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const routeChange = (path: string) => {
     navigate(path);
   };
@@ -20,7 +20,7 @@ export const PhotoDropZone = () => {
         video: true,
       })
       .then((stream) => {
-        let video: any = videoRef.current;
+        const video = videoRef.current;
         mediaStreamRef.current = stream;
         if (!video) {
           Swal.fire('Camera not found');
@@ -37,7 +37,7 @@ export const PhotoDropZone = () => {
     if (takePic) {
       getVideo();
     }
-  }, []);
+  }, [takePic]);
 
   const stopVideo = () => {
     if (mediaStreamRef?.current) {
@@ -46,7 +46,7 @@ export const PhotoDropZone = () => {
       mediaStreamRef.current.getTracks().forEach((track) => {
         track.stop();
         track.enabled = false;
-        let video: any = videoRef.current;
+        const video = videoRef.current;
         if (video) {
           video.srcObject = null;
         }
@@ -60,17 +60,17 @@ export const PhotoDropZone = () => {
   };
 
   const printPicture = () => {
-    let video = videoRef.current!;
-    let photo = photoRef.current!;
+    const video = videoRef.current!;
+    const photo = photoRef.current!;
     const width = video.videoWidth;
     const height = video.videoHeight;
     photo.width = width;
     photo.height = height;
-    let ctx = photo.getContext('2d')!;
+    const ctx = photo.getContext('2d')!;
     ctx.drawImage(video, 0, 0, width, height);
     photo.toBlob(async function (blob) {
       if (!blob) return Swal.fire('Something went wrog');
-      let file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
+      const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
       const imageUrl = URL.createObjectURL(file);
       setState({ file: file, photo: imageUrl, takePic: false });
       stopVideo();

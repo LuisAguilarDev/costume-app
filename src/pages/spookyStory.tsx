@@ -150,7 +150,7 @@ export default function SpookyStory() {
       <div className="w-full flex flex-col items-center justify-center px-[12px] sm:px-[0px] iniria">
         {histoyByLang[lang].map((historypart) => {
           return (
-            <div className="max-w-[65ch]">
+            <div key={historypart} className="max-w-[65ch]">
               <p id={historypart} className="text-cen">
                 {historypart}
               </p>

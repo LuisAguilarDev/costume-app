@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import logo from './../assets/Logo Def.jpg';
+import logo from './../assets/LogoDef.jpg';
 export default function Navbar() {
   let navigate = useNavigate();
   const routeChange = (path: string) => {
