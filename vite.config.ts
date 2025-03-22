@@ -6,16 +6,16 @@ export default defineConfig({
   plugins: [react()],
   ssr: { noExternal: true },
   preview: {
-    port: 4001,
     strictPort: true,
+    port: 80,
   },
   server: {
     watch: {
       usePolling: true,        // Enable polling to detect changes
       interval: 300            // Check for changes every 300ms (adjust if needed)
     },
-    port: 4001,
+    port: 80,
     strictPort: true,
     host: true,
-  },
+  }
 });
